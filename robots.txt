@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://aetherrealmapp.github.io/sitemap.xml
