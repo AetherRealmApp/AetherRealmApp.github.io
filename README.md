@@ -14,4 +14,4 @@ Canonical host: https://aetherrealmapp.github.io/
 | Support | https://aetherrealmapp.github.io/support/ |
 | Download | https://aetherrealmapp.github.io/download/ |
 
-Google Play package: `app.aetherrealm.realm` version 1.2.2 (5).
+Google Play package: `app.aetherrealm.realm` version 1.2.3 (6).

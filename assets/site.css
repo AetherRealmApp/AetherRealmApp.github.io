@@ -468,3 +468,40 @@ footer {
 
 code { overflow-wrap: anywhere; word-break: break-all; }
 .notice p, .meta-line { overflow-wrap: anywhere; }
+
+.form-status { margin-top: 14px; color: var(--gold-soft); font-size: 14px; }
+
+.delete-form {
+  margin-top: 18px;
+  padding: 20px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgba(16, 24, 22, 0.7);
+  display: grid;
+  gap: 8px;
+}
+.delete-form label { color: var(--text); font-size: 14px; }
+.delete-form input,
+.delete-form select,
+.delete-form textarea {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid var(--line);
+  background: #0b1210;
+  color: var(--text);
+  font: inherit;
+}
+.delete-form .check {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 6px 0 14px;
+  color: var(--muted);
+  font-size: 14px;
+}
+.delete-form .check input { width: auto; margin: 4px 0 0; }
+.delete-form button { justify-self: start; border: 0; }
+.delete-form button:disabled { opacity: 0.55; }
+
