@@ -1,4 +1,13 @@
 (() => {
+  const APK_URL =
+    "https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk";
+  const APK_NAME = "REALM-Play-app.aetherrealm.realm-1.2.3+6.apk";
+
+  document.querySelectorAll("[data-apk]").forEach((node) => {
+    node.setAttribute("href", APK_URL);
+    node.setAttribute("download", APK_NAME);
+  });
+
   const detectLanguage = () => {
     const saved = localStorage.getItem("realm-lang");
     if (saved === "tr" || saved === "en") return saved;
@@ -36,6 +45,12 @@
     menuBtn.addEventListener("click", () => {
       const open = drawer.classList.toggle("open");
       menuBtn.setAttribute("aria-expanded", String(open));
+    });
+    drawer.querySelectorAll("a").forEach((link) => {
+      link.addEventListener("click", () => {
+        drawer.classList.remove("open");
+        menuBtn.setAttribute("aria-expanded", "false");
+      });
     });
   }
 
