@@ -14,4 +14,7 @@ Canonical host: https://aetherrealmapp.github.io/
 | Support | https://aetherrealmapp.github.io/support/ |
 | Download | https://aetherrealmapp.github.io/download/ |
 
+Languages: English (default) and Turkish, remembered in `localStorage`.
+
 Google Play package: `app.aetherrealm.realm` version 1.2.3 (6).
+Signed APK: [play-1.2.3-6](https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk)

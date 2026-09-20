@@ -3,21 +3,25 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-  <title>REALM — Awaken a brighter you</title>
-  <meta name="description" content="Awaken a brighter you. A daily journey built around consistency, progression and a world that evolves with you.">
+  <title data-en="REALM — A better you is possible." data-tr="REALM — Daha iyi bir sen mümkün.">REALM — A better you is possible.</title>
+  <meta name="description" content="REALM is a daily journey built around consistency, progression, and a world that evolves with you.">
   <meta name="theme-color" content="#05070d">
   <link rel="canonical" href="https://aetherrealmapp.github.io/">
-  <meta property="og:title" content="REALM — Awaken a brighter you">
-  <meta property="og:description" content="A daily journey built around consistency, progression and a world that evolves with you.">
+  <meta property="og:title" content="REALM — A better you is possible.">
+  <meta property="og:description" content="A daily journey built around consistency, progression, and a world that evolves with you.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aetherrealmapp.github.io/">
-  <meta property="og:image" content="https://aetherrealmapp.github.io/assets/brand/og.png">
+  <meta property="og:image" content="https://aetherrealmapp.github.io/assets/brand/og.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="REALM — Awaken a brighter you">
-  <meta name="twitter:description" content="A daily journey built around consistency, progression and a world that evolves with you.">
-  <meta name="twitter:image" content="https://aetherrealmapp.github.io/assets/brand/og.png">
+  <meta name="twitter:title" content="REALM — A better you is possible.">
+  <meta name="twitter:description" content="A daily journey built around consistency, progression, and a world that evolves with you.">
+  <meta name="twitter:image" content="https://aetherrealmapp.github.io/assets/brand/og.jpg">
   <link rel="icon" href="./assets/brand/icon-512.png">
   <link rel="apple-touch-icon" href="./assets/brand/icon-512.png">
+  <link rel="preload" as="image" href="./assets/cinematic/hero-portrait-720.webp" media="(max-width: 899px)" fetchpriority="high">
+  <link rel="preload" as="image" href="./assets/cinematic/hero-wide.webp" media="(min-width: 900px)" fetchpriority="high">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500;1,600&family=Outfit:wght@400;500;600&display=swap" rel="stylesheet">
@@ -26,6 +30,7 @@
 <body class="home">
 
   <a class="skip" href="#content">Skip to content</a>
+
   <header class="site-header">
     <div class="wrap nav">
       <a class="brand" href="./">
@@ -33,166 +38,213 @@
         REALM
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="./" aria-current="page" data-en="Home" data-tr="Ana Sayfa">Home</a>
-        <a href="#grove" data-en="Living Grove" data-tr="Living Grove">Living Grove</a>
-        <a href="./download/" data-en="Download" data-tr="İndir">Download</a>
+        <a href="#journey" data-en="Journey" data-tr="Yolculuk">Journey</a>
+        <a href="#grove" data-en="World" data-tr="Dünya">World</a>
+        <a href="#experience" data-en="Features" data-tr="Özellikler">Features</a>
+        <a href="#aether" data-en="Story" data-tr="Hikaye">Story</a>
         <a href="./support/" data-en="Support" data-tr="Destek">Support</a>
       </nav>
       <div class="nav-end">
-        <button class="lang" type="button" aria-label="Switch language">TR</button>
-        <button class="menu-btn" type="button" aria-expanded="false" data-en-aria="Open menu" data-tr-aria="Menüyü aç">Menu</button>
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <button type="button" class="lang-btn" data-set-lang="tr" aria-pressed="false">TR</button>
+        </div>
+        <a class="cta cta-nav"
+           data-apk
+           href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk"
+           download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk">
+          <svg class="cta-icon" viewBox="0 0 24 24" width="14" height="14" aria-hidden="true"><path fill="currentColor" d="M17.52 9.33l1.42-2.46a.54.54 0 10-.94-.54l-1.44 2.5A7.6 7.6 0 0012 8a7.6 7.6 0 00-4.56.83L6 6.33a.54.54 0 10-.94.54l1.42 2.46A7.4 7.4 0 004.2 14.4v.9c0 1.5 1.74 2.7 7.8 2.7s7.8-1.2 7.8-2.7v-.9a7.4 7.4 0 00-2.28-5.07zM9.1 13.2a.85.85 0 110-1.7.85.85 0 010 1.7zm5.8 0a.85.85 0 110-1.7.85.85 0 010 1.7z"/></svg>
+          <span data-en="Download APK" data-tr="APK İndir">Download APK</span>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-drawer" data-en-aria="Open menu" data-tr-aria="Menüyü aç">Menu</button>
       </div>
     </div>
-    <nav class="drawer" aria-label="Mobile">
-      <a href="./" aria-current="page" data-en="Home" data-tr="Ana Sayfa">Home</a>
-      <a href="#features" data-en="Explore" data-tr="Keşfet">Explore</a>
-      <a href="#grove" data-en="Living Grove" data-tr="Living Grove">Living Grove</a>
-      <a href="./download/" data-en="Download" data-tr="İndir">Download</a>
+    <nav class="drawer" id="site-drawer" aria-label="Mobile">
+      <a href="#journey" data-en="Journey" data-tr="Yolculuk">Journey</a>
+      <a href="#grove" data-en="World" data-tr="Dünya">World</a>
+      <a href="#experience" data-en="Features" data-tr="Özellikler">Features</a>
+      <a href="#aether" data-en="Story" data-tr="Hikaye">Story</a>
       <a href="./support/" data-en="Support" data-tr="Destek">Support</a>
+      <a data-apk href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk" download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk" data-en="Download APK" data-tr="APK İndir">Download APK</a>
     </nav>
   </header>
 
   <main id="content">
-    <section class="hero">
+    <section class="hero" aria-label="REALM">
       <div class="hero-bg">
-        <img
-          src="./assets/grove/day365.png"
-          alt=""
-          width="720"
-          height="899"
-          fetchpriority="high"
-          decoding="async">
+        <picture>
+          <source media="(min-width: 900px)" srcset="./assets/cinematic/hero-wide-1280.webp 1280w, ./assets/cinematic/hero-wide.webp 1792w" sizes="100vw">
+          <img
+            src="./assets/cinematic/hero-portrait-720.webp"
+            srcset="./assets/cinematic/hero-portrait-720.webp 720w, ./assets/cinematic/hero-portrait.webp 1008w"
+            sizes="100vw"
+            alt="Living Grove — a golden Core hovering over a still lake in a misted forest valley"
+            width="720"
+            height="1280"
+            fetchpriority="high"
+            decoding="async">
+        </picture>
       </div>
       <div class="wrap hero-copy">
-        <p class="eyebrow" data-en="Android" data-tr="Android">Android</p>
-        <h1>REALM</h1>
-        <p class="intent" data-en="Awaken a brighter you." data-tr="Daha parlak bir seni uyandır.">Awaken a brighter you.</p>
-        <p class="lede" data-en="A daily journey built around consistency, progression and a world that evolves with you." data-tr="Süreklilik, ilerleme ve seninle birlikte evrilen bir dünya etrafında kurulu günlük bir yolculuk.">A daily journey built around consistency, progression and a world that evolves with you.</p>
+        <p class="eyebrow" data-en="A CALMER MIND. A BRIGHTER TOMORROW." data-tr="DAHA SAKİN BİR ZİHİN. DAHA AYDINLIK BİR YARIN.">A CALMER MIND. A BRIGHTER TOMORROW.</p>
+        <h1 data-en="A BETTER YOU IS POSSIBLE." data-tr="DAHA İYİ BİR SEN MÜMKÜN.">A BETTER YOU IS POSSIBLE.</h1>
+        <p class="lede" data-en="REALM is a daily journey built around consistency, progression, and a world that evolves with you." data-tr="REALM; süreklilik, ilerleme ve seninle birlikte evrilen bir dünya etrafında kurulu günlük bir yolculuktur.">REALM is a daily journey built around consistency, progression, and a world that evolves with you.</p>
         <div class="cta-row">
           <a class="cta cta-primary"
              data-apk
              href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk"
-             download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk"
-             data-en="Download APK"
-             data-tr="APK İndir">Download APK</a>
-          <a class="cta cta-ghost" href="#features" data-en="Explore REALM" data-tr="REALM’i keşfet">Explore REALM</a>
+             download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk">
+            <svg class="cta-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17.52 9.33l1.42-2.46a.54.54 0 10-.94-.54l-1.44 2.5A7.6 7.6 0 0012 8a7.6 7.6 0 00-4.56.83L6 6.33a.54.54 0 10-.94.54l1.42 2.46A7.4 7.4 0 004.2 14.4v.9c0 1.5 1.74 2.7 7.8 2.7s7.8-1.2 7.8-2.7v-.9a7.4 7.4 0 00-2.28-5.07zM9.1 13.2a.85.85 0 110-1.7.85.85 0 010 1.7zm5.8 0a.85.85 0 110-1.7.85.85 0 010 1.7z"/></svg>
+            <span data-en="Download APK" data-tr="APK İndir">Download APK</span>
+          </a>
+          <a class="cta cta-ghost" href="#journey" data-en="Explore REALM" data-tr="REALM'i Keşfet">Explore REALM</a>
         </div>
       </div>
     </section>
 
-    <section class="section" id="features">
+    <section class="section loop-section" id="journey">
       <div class="wrap">
-        <ol class="path">
+        <p class="eyebrow" data-en="The daily path" data-tr="Günlük yol">The daily path</p>
+        <h2 data-en="Return. Awaken. Continue." data-tr="Geri dön. Uyan. Devam et.">Return. Awaken. Continue.</h2>
+        <ol class="loop">
           <li>
-            <span>01</span>
-            <h3>AWAKEN</h3>
-            <p data-en="The daily Core awakening ritual. Return, wake the Core, begin a 24-hour cycle." data-tr="Günlük Core uyanış ritüeli. Geri dön, Core’u uyandır, 24 saatlik döngüyü başlat.">The daily Core awakening ritual. Return, wake the Core, begin a 24-hour cycle.</p>
+            <span class="loop-key">AWAKEN</span>
+            <p data-en="Return each day and awaken the Core." data-tr="Her gün geri dön ve Core'u uyandır.">Return each day and awaken the Core.</p>
           </li>
           <li>
-            <span>02</span>
-            <h3>ESSENCE</h3>
-            <p data-en="The progression system. Essence is earned through AWAKEN and kept in your history." data-tr="İlerleme sistemi. Essence, AWAKEN ile kazanılır ve geçmişinde tutulur.">The progression system. Essence is earned through AWAKEN and kept in your history.</p>
+            <span class="loop-key">ESSENCE</span>
+            <p data-en="Build progression through your daily journey." data-tr="Günlük yolculuğunla ilerlemeni oluştur.">Build progression through your daily journey.</p>
           </li>
           <li>
-            <span>03</span>
-            <h3>STREAK</h3>
-            <p data-en="Daily continuity. A record of showing up — not a scoreboard of other people." data-tr="Günlük devamlılık. Başkalarının skor tablosu değil; gelmiş olmanın kaydı.">Daily continuity. A record of showing up — not a scoreboard of other people.</p>
+            <span class="loop-key">STREAK</span>
+            <p data-en="Keep your continuity alive." data-tr="Devamlılığını koru.">Keep your continuity alive.</p>
           </li>
           <li>
-            <span>04</span>
-            <h3>EVOLUTION</h3>
-            <p data-en="As days and milestones accumulate, Aether and the world evolve with you." data-tr="Günler ve kilometre taşları biriktikçe Aether ve dünya seninle evrilir.">As days and milestones accumulate, Aether and the world evolve with you.</p>
+            <span class="loop-key">EVOLUTION</span>
+            <p data-en="Watch Aether and your Realm change over time." data-tr="Aether'ın ve Realm'inin zamanla değişimini izle.">Watch Aether and your Realm change over time.</p>
+          </li>
+          <li>
+            <span class="loop-key">RETURN</span>
+            <p data-en="Come back tomorrow and continue the journey." data-tr="Yarın geri dön ve yolculuğa devam et.">Come back tomorrow and continue the journey.</p>
           </li>
         </ol>
       </div>
     </section>
 
-    <section class="chapter" id="grove">
-      <div class="chapter-bg">
-        <img
-          src="./assets/grove/day90.png"
-          alt="Living Grove — the Core over turquoise water"
-          width="720"
-          height="899"
-          loading="lazy"
-          decoding="async">
+    <section class="grove-section" id="grove">
+      <div class="wrap grove-head">
+        <p class="eyebrow">LIVING GROVE</p>
+        <h2 data-en="Your journey begins here." data-tr="Yolculuğun burada başlıyor.">Your journey begins here.</h2>
+        <p class="lead" data-en="The free starter Realm. Calm water, living forest, and a Core that waits for you to return." data-tr="Ücretsiz başlangıç Realm'i. Sakin su, yaşayan orman ve geri dönmeni bekleyen bir Core.">The free starter Realm. Calm water, living forest, and a Core that waits for you to return.</p>
       </div>
-      <div class="wrap chapter-copy">
-        <p class="eyebrow">Living Grove</p>
-        <h2 data-en="The free starter Realm" data-tr="Ücretsiz başlangıç Realm’i">The free starter Realm</h2>
-        <p class="lead" data-en="Calm forest, turquoise water and living natural motion. Every REALM account begins here." data-tr="Sakin orman, turkuaz su ve yaşayan doğal hareket. Her REALM hesabı burada başlar.">Calm forest, turquoise water and living natural motion. Every REALM account begins here.</p>
+      <div class="grove-stage">
+        <figure class="stage-frame">
+          <img
+            id="grove-stage-image"
+            src="./assets/grove/day90.webp"
+            alt="Living Grove on day 90"
+            width="720"
+            height="899"
+            loading="lazy"
+            decoding="async">
+        </figure>
+        <div class="day-rail" role="tablist" aria-label="Living Grove days">
+          <button type="button" role="tab" aria-selected="false" data-grove-day="1" data-src="./assets/grove/day1.webp" data-alt-en="Living Grove on day 1" data-alt-tr="Living Grove, 1. gün">
+            <span data-en="Day 1" data-tr="Gün 1">Day 1</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-grove-day="30" data-src="./assets/grove/day30.webp" data-alt-en="Living Grove on day 30" data-alt-tr="Living Grove, 30. gün">
+            <span data-en="Day 30" data-tr="Gün 30">Day 30</span>
+          </button>
+          <button type="button" role="tab" aria-selected="true" data-grove-day="90" data-src="./assets/grove/day90.webp" data-alt-en="Living Grove on day 90" data-alt-tr="Living Grove, 90. gün">
+            <span data-en="Day 90" data-tr="Gün 90">Day 90</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-grove-day="180" data-src="./assets/grove/day180.webp" data-alt-en="Living Grove on day 180" data-alt-tr="Living Grove, 180. gün">
+            <span data-en="Day 180" data-tr="Gün 180">Day 180</span>
+          </button>
+          <button type="button" role="tab" aria-selected="false" data-grove-day="365" data-src="./assets/grove/day365.webp" data-alt-en="Living Grove on day 365" data-alt-tr="Living Grove, 365. gün">
+            <span data-en="Day 365" data-tr="Gün 365">Day 365</span>
+          </button>
+        </div>
       </div>
     </section>
 
-    <section class="section grove-body">
-      <div class="wrap">
-        <div class="lore-grid">
-          <article class="lore">
-            <h3>DAY</h3>
-            <p data-en="Your day on the REALM journey. The Grove keeps that history." data-tr="REALM yolculuğundaki günün. Grove bu geçmişi tutar.">Your day on the REALM journey. The Grove keeps that history.</p>
-          </article>
-          <article class="lore">
-            <h3>AETHER</h3>
-            <p data-en="Your evolving presence in the Grove. It changes as days, Essence and milestones accumulate." data-tr="Grove’taki gelişen varlığın. Günler, Essence ve kilometre taşları biriktikçe değişir.">Your evolving presence in the Grove. It changes as days, Essence and milestones accumulate.</p>
-          </article>
+    <section class="aether-section" id="aether">
+      <div class="wrap aether-grid">
+        <div class="aether-copy">
+          <p class="eyebrow">AETHER</p>
+          <h2 data-en="EVOLVE WITH YOUR REALM" data-tr="REALM'İNLE BİRLİKTE EVRİL">EVOLVE WITH YOUR REALM</h2>
+          <p class="lead" data-en="As days, Essence, and milestones accumulate, Aether evolves with your journey." data-tr="Günler, Essence ve kilometre taşları biriktikçe Aether yolculuğunla birlikte evrilir.">As days, Essence, and milestones accumulate, Aether evolves with your journey.</p>
         </div>
+        <div class="aether-pair">
+          <figure>
+            <div class="aether-well">
+              <img src="./assets/grove/aether-day1.webp" alt="Aether at the beginning of the journey" width="155" height="750" loading="lazy" decoding="async">
+            </div>
+            <figcaption data-en="Beginning" data-tr="Başlangıç">Beginning</figcaption>
+          </figure>
+          <figure>
+            <div class="aether-well aether-well-glow">
+              <img src="./assets/grove/aether-day7.webp" alt="Aether as the journey continues" width="210" height="770" loading="lazy" decoding="async">
+            </div>
+            <figcaption data-en="Becoming" data-tr="Oluş">Becoming</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
 
-        <figure class="portrait">
+    <section class="experience-section" id="experience">
+      <div class="wrap experience-grid">
+        <div class="experience-copy">
+          <p class="eyebrow" data-en="On your phone" data-tr="Telefonunda">On your phone</p>
+          <h2 data-en="REALM, WHEREVER YOU GO." data-tr="REALM, NEREDEYSEN SENİNLE.">REALM, WHEREVER YOU GO.</h2>
+          <p class="lead" data-en="Carry Living Grove with you. Awaken the Core, keep your streak, and watch Aether change — at home, on the road, wherever the day finds you." data-tr="Living Grove'u yanında taşı. Core'u uyandır, serini koru ve Aether'ın değişimini izle — evde, yolda, gün seni nerede bulursa.">Carry Living Grove with you. Awaken the Core, keep your streak, and watch Aether change — at home, on the road, wherever the day finds you.</p>
+        </div>
+        <figure class="device">
           <img
             src="./assets/grove/still.webp"
-            alt="Aether in Living Grove"
+            alt="Aether standing in Living Grove inside REALM"
             width="720"
             height="1280"
             loading="lazy"
             decoding="async">
         </figure>
-
-        <p class="still-label">Living Grove</p>
-        <div class="still-grid">
-          <figure class="still">
-            <img src="./assets/grove/day1.png" alt="Living Grove, day 1" width="720" height="899" loading="lazy" decoding="async">
-            <figcaption>DAY 1</figcaption>
-          </figure>
-          <figure class="still">
-            <img src="./assets/grove/day30.png" alt="Living Grove, day 30" width="720" height="899" loading="lazy" decoding="async">
-            <figcaption>DAY 30</figcaption>
-          </figure>
-          <figure class="still">
-            <img src="./assets/grove/day90.png" alt="Living Grove, day 90" width="720" height="899" loading="lazy" decoding="async">
-            <figcaption>DAY 90</figcaption>
-          </figure>
-          <figure class="still">
-            <img src="./assets/grove/day180.png" alt="Living Grove, day 180" width="720" height="899" loading="lazy" decoding="async">
-            <figcaption>DAY 180</figcaption>
-          </figure>
-          <figure class="still">
-            <img src="./assets/grove/day365.png" alt="Living Grove, day 365" width="720" height="899" loading="lazy" decoding="async">
-            <figcaption>DAY 365</figcaption>
-          </figure>
-        </div>
       </div>
     </section>
 
-    <section class="section" id="download">
-      <div class="wrap close-cta">
-        <h2 data-en="Begin in Living Grove" data-tr="Living Grove’ta başla">Begin in Living Grove</h2>
-        <p class="lead" data-en="Signed Android APK. app.aetherrealm.realm · 1.2.3 (6)." data-tr="İmzalı Android APK. app.aetherrealm.realm · 1.2.3 (6).">Signed Android APK. app.aetherrealm.realm · 1.2.3 (6).</p>
-        <div class="cta-row">
-          <a class="cta cta-primary"
-             data-apk
-             href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk"
-             download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk"
-             data-en="Download APK"
-             data-tr="APK İndir">Download APK</a>
-          <a class="cta cta-ghost" href="./download/" data-en="APK identity" data-tr="APK kimliği">APK identity</a>
-        </div>
+    <section class="enter-section" id="download">
+      <div class="enter-bg">
+        <img
+          src="./assets/cinematic/enter-1280.webp"
+          srcset="./assets/cinematic/enter-1280.webp 1280w, ./assets/cinematic/enter.webp 1792w"
+          sizes="100vw"
+          alt="Dawn light on a still lake, a path of gold leading toward the Core"
+          width="1280"
+          height="720"
+          loading="lazy"
+          decoding="async">
+      </div>
+      <div class="wrap enter-copy">
+        <p class="eyebrow" data-en="Begin" data-tr="Başla">Begin</p>
+        <h2 data-en="ENTER REALM" data-tr="REALM'E GİR">ENTER REALM</h2>
+        <p class="lead" data-en="Small steps. Brighter days." data-tr="Küçük adımlar. Daha aydınlık günler.">Small steps. Brighter days.</p>
+        <a class="cta cta-primary"
+           data-apk
+           href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk"
+           download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk">
+          <svg class="cta-icon" viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path fill="currentColor" d="M17.52 9.33l1.42-2.46a.54.54 0 10-.94-.54l-1.44 2.5A7.6 7.6 0 0012 8a7.6 7.6 0 00-4.56.83L6 6.33a.54.54 0 10-.94.54l1.42 2.46A7.4 7.4 0 004.2 14.4v.9c0 1.5 1.74 2.7 7.8 2.7s7.8-1.2 7.8-2.7v-.9a7.4 7.4 0 00-2.28-5.07zM9.1 13.2a.85.85 0 110-1.7.85.85 0 010 1.7zm5.8 0a.85.85 0 110-1.7.85.85 0 010 1.7z"/></svg>
+          <span data-en="Download APK" data-tr="APK İndir">Download APK</span>
+        </a>
       </div>
     </section>
   </main>
 
   <footer>
     <div class="wrap foot">
-      <div>REALM</div>
+      <div class="foot-brand">
+        <div>REALM</div>
+        <p data-en="A calmer mind. A brighter tomorrow." data-tr="Daha sakin bir zihin. Daha aydınlık bir yarın.">A calmer mind. A brighter tomorrow.</p>
+      </div>
       <nav>
         <a href="./privacy/" data-en="Privacy" data-tr="Gizlilik">Privacy</a>
         <a href="./delete-account/" data-en="Delete Account" data-tr="Hesabı Sil">Delete Account</a>

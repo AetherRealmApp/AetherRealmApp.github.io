@@ -11,25 +11,41 @@
   const detectLanguage = () => {
     const saved = localStorage.getItem("realm-lang");
     if (saved === "tr" || saved === "en") return saved;
-    const nav = String(navigator.language || navigator.userLanguage || "en").toLowerCase();
-    return nav.startsWith("tr") ? "tr" : "en";
+    return "en";
   };
 
   let language = detectLanguage();
 
   const applyLanguage = () => {
     document.documentElement.lang = language;
-    document.querySelectorAll(".lang").forEach((btn) => {
-      btn.textContent = language === "en" ? "TR" : "EN";
-    });
     document.querySelectorAll("[data-en]").forEach((node) => {
       const value = node.dataset[language];
       if (typeof value === "string") node.textContent = value;
     });
     document.querySelectorAll("[data-en-aria]").forEach((node) => {
-      node.setAttribute("aria-label", language === "tr" ? node.dataset.trAria : node.dataset.enAria);
+      node.setAttribute(
+        "aria-label",
+        language === "tr" ? node.dataset.trAria : node.dataset.enAria
+      );
     });
+    document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+      btn.setAttribute("aria-pressed", String(btn.dataset.setLang === language));
+    });
+    const groveImage = document.getElementById("grove-stage-image");
+    const selected = document.querySelector(".day-rail [aria-selected='true']");
+    if (groveImage && selected) {
+      groveImage.alt =
+        language === "tr" ? selected.dataset.altTr : selected.dataset.altEn;
+    }
   };
+
+  document.querySelectorAll("[data-set-lang]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      language = btn.dataset.setLang === "tr" ? "tr" : "en";
+      localStorage.setItem("realm-lang", language);
+      applyLanguage();
+    });
+  });
 
   document.querySelectorAll(".lang").forEach((btn) => {
     btn.addEventListener("click", () => {
@@ -39,17 +55,52 @@
     });
   });
 
+  const header = document.querySelector(".site-header");
   const menuBtn = document.querySelector(".menu-btn");
   const drawer = document.querySelector(".drawer");
+
+  const setMenu = (open) => {
+    if (!menuBtn || !drawer) return;
+    drawer.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    document.body.classList.toggle("nav-open", open);
+  };
+
   if (menuBtn && drawer) {
     menuBtn.addEventListener("click", () => {
-      const open = drawer.classList.toggle("open");
-      menuBtn.setAttribute("aria-expanded", String(open));
+      setMenu(!drawer.classList.contains("open"));
     });
     drawer.querySelectorAll("a").forEach((link) => {
-      link.addEventListener("click", () => {
-        drawer.classList.remove("open");
-        menuBtn.setAttribute("aria-expanded", "false");
+      link.addEventListener("click", () => setMenu(false));
+    });
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setMenu(false);
+    });
+    document.addEventListener("click", (event) => {
+      if (!drawer.classList.contains("open")) return;
+      if (drawer.contains(event.target) || menuBtn.contains(event.target)) return;
+      setMenu(false);
+    });
+  }
+
+  const onScroll = () => {
+    if (!header) return;
+    header.classList.toggle("is-scrolled", window.scrollY > 24);
+  };
+  onScroll();
+  window.addEventListener("scroll", onScroll, { passive: true });
+
+  const groveImage = document.getElementById("grove-stage-image");
+  const groveButtons = document.querySelectorAll("[data-grove-day]");
+  if (groveImage && groveButtons.length) {
+    groveButtons.forEach((btn) => {
+      const preload = new Image();
+      preload.src = btn.dataset.src;
+      btn.addEventListener("click", () => {
+        groveButtons.forEach((other) => other.setAttribute("aria-selected", "false"));
+        btn.setAttribute("aria-selected", "true");
+        groveImage.src = btn.dataset.src;
+        groveImage.alt = language === "tr" ? btn.dataset.altTr : btn.dataset.altEn;
       });
     });
   }
