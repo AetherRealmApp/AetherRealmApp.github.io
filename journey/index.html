@@ -11,7 +11,7 @@
   <meta property="og:description" content="AWAKEN, Essence, streak, Aether, Living Grove and evolution — the real REALM progression.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://aetherrealmapp.github.io/journey/">
-  <meta property="og:image" content="https://aetherrealmapp.github.io/assets/brand/og.png">
+  <meta property="og:image" content="https://aetherrealmapp.github.io/assets/brand/og.jpg">
   <link rel="icon" href="../assets/brand/icon-512.png">
   <link rel="apple-touch-icon" href="../assets/brand/icon-512.png">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -29,21 +29,31 @@
         REALM
       </a>
       <nav class="nav-links" aria-label="Primary">
-        <a href="../" data-en="Home" data-tr="Ana Sayfa">Home</a>
-        <a href="../journey/" aria-current="page" data-en="Journey" data-tr="Yolculuk">Journey</a>
-        <a href="../living-grove/" data-en="Living Grove" data-tr="Living Grove">Living Grove</a>
-        <a href="../download/" data-en="Download" data-tr="İndir">Download</a>
+        <a href="../#journey" aria-current="page" data-en="Journey" data-tr="Yolculuk">Journey</a>
+        <a href="../#grove" data-en="World" data-tr="Dünya">World</a>
+        <a href="../#experience" data-en="Features" data-tr="Özellikler">Features</a>
+        <a href="../#aether" data-en="Story" data-tr="Hikaye">Story</a>
         <a href="../support/" data-en="Support" data-tr="Destek">Support</a>
-        <button class="lang" type="button" aria-label="Switch language">TR</button>
       </nav>
-      <button class="menu-btn" type="button" aria-expanded="false" data-en-aria="Open menu" data-tr-aria="Menüyü aç">Menu</button>
+      <div class="nav-end">
+        <div class="lang-switch" role="group" aria-label="Language">
+          <button type="button" class="lang-btn" data-set-lang="en" aria-pressed="true">EN</button>
+          <span class="lang-sep" aria-hidden="true">/</span>
+          <button type="button" class="lang-btn" data-set-lang="tr" aria-pressed="false">TR</button>
+        </div>
+        <a class="cta cta-nav" data-apk href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk" download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk">
+          <span data-en="Download APK" data-tr="APK İndir">Download APK</span>
+        </a>
+        <button class="menu-btn" type="button" aria-expanded="false" aria-controls="site-drawer" data-en-aria="Open menu" data-tr-aria="Menüyü aç">Menu</button>
+      </div>
     </div>
-    <nav class="drawer" aria-label="Mobile">
-      <a href="../" data-en="Home" data-tr="Ana Sayfa">Home</a>
-      <a href="../journey/" aria-current="page" data-en="Journey" data-tr="Yolculuk">Journey</a>
-      <a href="../living-grove/" data-en="Living Grove" data-tr="Living Grove">Living Grove</a>
-      <a href="../download/" data-en="Download" data-tr="İndir">Download</a>
+    <nav class="drawer" id="site-drawer" aria-label="Mobile">
+      <a href="../#journey" aria-current="page" data-en="Journey" data-tr="Yolculuk">Journey</a>
+      <a href="../#grove" data-en="World" data-tr="Dünya">World</a>
+      <a href="../#experience" data-en="Features" data-tr="Özellikler">Features</a>
+      <a href="../#aether" data-en="Story" data-tr="Hikaye">Story</a>
       <a href="../support/" data-en="Support" data-tr="Destek">Support</a>
+      <a data-apk href="https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk" download="REALM-Play-app.aetherrealm.realm-1.2.3+6.apk" data-en="Download APK" data-tr="APK İndir">Download APK</a>
     </nav>
   </header>
 
@@ -69,7 +79,10 @@
 
   <footer>
     <div class="wrap foot">
-      <div>REALM</div>
+      <div class="foot-brand">
+        <div>REALM</div>
+        <p data-en="A calmer mind. A brighter tomorrow." data-tr="Daha sakin bir zihin. Daha aydınlık bir yarın.">A calmer mind. A brighter tomorrow.</p>
+      </div>
       <nav>
         <a href="../privacy/" data-en="Privacy" data-tr="Gizlilik">Privacy</a>
         <a href="../delete-account/" data-en="Delete Account" data-tr="Hesabı Sil">Delete Account</a>
