@@ -2,9 +2,17 @@
   const APK_URL =
     "https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk";
   const APK_NAME = "REALM-Play-app.aetherrealm.realm-1.2.3+6.apk";
-  const APK_FRAME = "realm-apk-download";
   const PLAUSIBLE_DOMAIN = "aetherrealmapp.github.io";
   const PLAUSIBLE_SRC = "https://plausible.io/js/script.js";
+
+  document.documentElement.setAttribute("translate", "no");
+  document.documentElement.classList.add("notranslate");
+  if (!document.querySelector('meta[name="google"][content="notranslate"]')) {
+    const meta = document.createElement("meta");
+    meta.setAttribute("name", "google");
+    meta.setAttribute("content", "notranslate");
+    document.head.appendChild(meta);
+  }
 
   window.plausible =
     window.plausible ||
@@ -20,26 +28,11 @@
     document.head.appendChild(script);
   }
 
-  const startApkDownload = () => {
-    document.querySelectorAll('iframe[name="' + APK_FRAME + '"]').forEach((node) => node.remove());
-    const frame = document.createElement("iframe");
-    frame.name = APK_FRAME;
-    frame.setAttribute("hidden", "");
-    frame.setAttribute("aria-hidden", "true");
-    frame.setAttribute("title", "APK download");
-    frame.src = APK_URL;
-    document.body.appendChild(frame);
-  };
-
   document.querySelectorAll("[data-apk]").forEach((node) => {
     node.setAttribute("href", APK_URL);
     node.setAttribute("download", APK_NAME);
-    node.addEventListener("click", (event) => {
-      if (event.defaultPrevented) return;
-      if (event.button !== 0) return;
-      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-      event.preventDefault();
-      startApkDownload();
+    node.setAttribute("type", "application/vnd.android.package-archive");
+    node.addEventListener("click", () => {
       window.plausible("REALM_APK_DOWNLOAD");
     });
   });
@@ -47,7 +40,8 @@
   const detectLanguage = () => {
     const saved = localStorage.getItem("realm-lang");
     if (saved === "tr" || saved === "en") return saved;
-    return "en";
+    const nav = String(navigator.language || navigator.userLanguage || "en").toLowerCase();
+    return nav.startsWith("tr") ? "tr" : "en";
   };
 
   let language = detectLanguage();
@@ -55,6 +49,7 @@
   const applyLanguage = () => {
     document.documentElement.lang = language;
     document.querySelectorAll("[data-en]").forEach((node) => {
+      if (node.closest(".lang-switch")) return;
       const value = node.dataset[language];
       if (typeof value === "string") node.textContent = value;
     });
@@ -66,6 +61,7 @@
     });
     document.querySelectorAll("[data-set-lang]").forEach((btn) => {
       btn.setAttribute("aria-pressed", String(btn.dataset.setLang === language));
+      btn.textContent = btn.dataset.setLang === "tr" ? "TR" : "EN";
     });
     const groveImage = document.getElementById("grove-stage-image");
     const selected = document.querySelector(".day-rail [aria-selected='true']");
