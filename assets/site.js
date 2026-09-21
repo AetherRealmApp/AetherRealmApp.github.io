@@ -3,9 +3,25 @@
     "https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk";
   const APK_NAME = "REALM-Play-app.aetherrealm.realm-1.2.3+6.apk";
   const APK_FRAME = "realm-apk-download";
+  const PLAUSIBLE_DOMAIN = "aetherrealmapp.github.io";
+  const PLAUSIBLE_SRC = "https://plausible.io/js/script.js";
+
+  window.plausible =
+    window.plausible ||
+    function () {
+      (window.plausible.q = window.plausible.q || []).push(arguments);
+    };
+
+  if (!document.querySelector('script[src="' + PLAUSIBLE_SRC + '"]')) {
+    const script = document.createElement("script");
+    script.defer = true;
+    script.setAttribute("data-domain", PLAUSIBLE_DOMAIN);
+    script.src = PLAUSIBLE_SRC;
+    document.head.appendChild(script);
+  }
 
   const startApkDownload = () => {
-    document.querySelectorAll(`iframe[name="${APK_FRAME}"]`).forEach((node) => node.remove());
+    document.querySelectorAll('iframe[name="' + APK_FRAME + '"]').forEach((node) => node.remove());
     const frame = document.createElement("iframe");
     frame.name = APK_FRAME;
     frame.setAttribute("hidden", "");
@@ -24,6 +40,7 @@
       if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
       event.preventDefault();
       startApkDownload();
+      window.plausible("REALM_APK_DOWNLOAD");
     });
   });
 
