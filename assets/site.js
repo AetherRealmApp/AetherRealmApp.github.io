@@ -119,7 +119,7 @@
         groveButtons.forEach((other) => other.setAttribute("aria-selected", "false"));
         btn.setAttribute("aria-selected", "true");
         groveImage.src = btn.dataset.src;
-        groveImage.alt = language === "tr" ? btn.dataset.altTr : btn.dataset.enAria;
+        groveImage.alt = language === "tr" ? btn.dataset.altTr : btn.dataset.altEn;
       });
     });
   }
