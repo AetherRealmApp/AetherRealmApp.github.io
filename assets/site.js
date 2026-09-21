@@ -2,10 +2,29 @@
   const APK_URL =
     "https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk";
   const APK_NAME = "REALM-Play-app.aetherrealm.realm-1.2.3+6.apk";
+  const APK_FRAME = "realm-apk-download";
+
+  const startApkDownload = () => {
+    document.querySelectorAll(`iframe[name="${APK_FRAME}"]`).forEach((node) => node.remove());
+    const frame = document.createElement("iframe");
+    frame.name = APK_FRAME;
+    frame.setAttribute("hidden", "");
+    frame.setAttribute("aria-hidden", "true");
+    frame.setAttribute("title", "APK download");
+    frame.src = APK_URL;
+    document.body.appendChild(frame);
+  };
 
   document.querySelectorAll("[data-apk]").forEach((node) => {
     node.setAttribute("href", APK_URL);
     node.setAttribute("download", APK_NAME);
+    node.addEventListener("click", (event) => {
+      if (event.defaultPrevented) return;
+      if (event.button !== 0) return;
+      if (event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+      event.preventDefault();
+      startApkDownload();
+    });
   });
 
   const detectLanguage = () => {
@@ -100,7 +119,7 @@
         groveButtons.forEach((other) => other.setAttribute("aria-selected", "false"));
         btn.setAttribute("aria-selected", "true");
         groveImage.src = btn.dataset.src;
-        groveImage.alt = language === "tr" ? btn.dataset.altTr : btn.dataset.altEn;
+        groveImage.alt = language === "tr" ? btn.dataset.altTr : btn.dataset.enAria;
       });
     });
   }
