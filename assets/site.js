@@ -28,12 +28,49 @@
     document.head.appendChild(script);
   }
 
+  let apkBusy = false;
+
+  const triggerFileDownload = (href, filename) => {
+    const link = document.createElement("a");
+    link.href = href;
+    link.download = filename;
+    link.rel = "noopener";
+    link.type = "application/vnd.android.package-archive";
+    document.body.appendChild(link);
+    link.click();
+    link.remove();
+  };
+
+  const downloadApk = async (trigger) => {
+    if (apkBusy) return;
+    apkBusy = true;
+    trigger.setAttribute("aria-busy", "true");
+    let objectUrl = "";
+    try {
+      const response = await fetch(APK_URL);
+      if (!response.ok) throw new Error("apk-fetch-failed");
+      const blob = await response.blob();
+      objectUrl = URL.createObjectURL(blob);
+      triggerFileDownload(objectUrl, APK_NAME);
+    } catch (error) {
+      triggerFileDownload(APK_URL, APK_NAME);
+    } finally {
+      if (objectUrl) {
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+      }
+      trigger.removeAttribute("aria-busy");
+      apkBusy = false;
+    }
+  };
+
   document.querySelectorAll("[data-apk]").forEach((node) => {
     node.setAttribute("href", APK_URL);
     node.setAttribute("download", APK_NAME);
     node.setAttribute("type", "application/vnd.android.package-archive");
-    node.addEventListener("click", () => {
+    node.addEventListener("click", (event) => {
+      event.preventDefault();
       window.plausible("REALM_APK_DOWNLOAD");
+      void downloadApk(node);
     });
   });
 
