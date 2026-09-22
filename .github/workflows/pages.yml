@@ -21,6 +21,20 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Mirror APK for same-origin download
+        run: |
+          mkdir -p apk
+          curl -fL --retry 3 --retry-delay 2 \
+            -o "apk/REALM-Play-app.aetherrealm.realm-1.2.3+6.apk" \
+            "https://github.com/AetherRealmApp/realm/releases/download/play-1.2.3-6/REALM-Play-app.aetherrealm.realm-1.2.3%2B6.apk"
+          python3 - <<'PY'
+          import os, sys
+          path = "apk/REALM-Play-app.aetherrealm.realm-1.2.3+6.apk"
+          size = os.path.getsize(path)
+          if size < 80_000_000:
+              sys.exit(f"APK too small: {size}")
+          print(f"Mirrored APK {size} bytes")
+          PY
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .

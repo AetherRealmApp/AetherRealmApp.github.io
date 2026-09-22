@@ -30,6 +30,9 @@
 
   let apkBusy = false;
 
+  const localApkUrl = () =>
+    new URL("/apk/" + encodeURIComponent(APK_NAME), window.location.origin).href;
+
   const triggerFileDownload = (href, filename) => {
     const link = document.createElement("a");
     link.href = href;
@@ -41,25 +44,41 @@
     link.remove();
   };
 
+  const fetchApkBlob = async (url) => {
+    const response = await fetch(url);
+    if (!response.ok) throw new Error("apk-fetch-failed");
+    const blob = await response.blob();
+    const type = String(blob.type || "");
+    if (blob.size < 1024 || type.indexOf("text/html") !== -1) {
+      throw new Error("apk-not-binary");
+    }
+    return blob;
+  };
+
   const downloadApk = async (trigger) => {
     if (apkBusy) return;
     apkBusy = true;
     trigger.setAttribute("aria-busy", "true");
     let objectUrl = "";
     try {
-      const response = await fetch(APK_URL);
-      if (!response.ok) throw new Error("apk-fetch-failed");
-      const blob = await response.blob();
+      let blob;
+      try {
+        blob = await fetchApkBlob(APK_URL);
+      } catch (error) {
+        blob = await fetchApkBlob(localApkUrl());
+      }
       objectUrl = URL.createObjectURL(blob);
       triggerFileDownload(objectUrl, APK_NAME);
     } catch (error) {
       triggerFileDownload(APK_URL, APK_NAME);
     } finally {
       if (objectUrl) {
-        setTimeout(() => URL.revokeObjectURL(objectUrl), 1000);
+        setTimeout(() => URL.revokeObjectURL(objectUrl), 60000);
       }
-      trigger.removeAttribute("aria-busy");
-      apkBusy = false;
+      setTimeout(() => {
+        trigger.removeAttribute("aria-busy");
+        apkBusy = false;
+      }, 1500);
     }
   };
 
@@ -69,6 +88,7 @@
     node.setAttribute("type", "application/vnd.android.package-archive");
     node.addEventListener("click", (event) => {
       event.preventDefault();
+      if (apkBusy) return;
       window.plausible("REALM_APK_DOWNLOAD");
       void downloadApk(node);
     });
